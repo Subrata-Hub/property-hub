@@ -11,27 +11,26 @@ const Properties = () => {
   const [pageSize, setPageSize] = useState(9);
   const [totalItems, setTotalItems] = useState(0);
 
-  const fetchProperties = async () => {
-    try {
-      const res = await fetch(
-        `/api/properties?page=${page}&pageSize=${pageSize}`
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-
-      const data = await res.json();
-      setProperties(data.properties);
-      setTotalItems(data.total);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const res = await fetch(
+          `/api/properties?page=${page}&pageSize=${pageSize}`
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
+        setProperties(data.properties);
+        setTotalItems(data.total);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchProperties();
   }, [page, pageSize]);
 
