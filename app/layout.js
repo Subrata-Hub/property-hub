@@ -5,6 +5,7 @@ import { GlobalProvider } from "@/context/GlobalContext";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "photoswipe/dist/photoswipe.css";
 
 export const metadata = {
   title: "PropertyHub | Find The Perfect Rental",
